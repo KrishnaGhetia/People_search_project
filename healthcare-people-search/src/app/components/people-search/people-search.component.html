@@ -21,26 +21,6 @@
       <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
         Discover and connect with people instantly using our advanced search technology
       </p>
-      
-      <!-- Stats Cards Row -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
-        <div class="stats-card glass-effect text-center enhanced-shadow smooth-appear">
-          <div class="text-3xl font-bold text-gradient mb-2">{{ searchResults().length }}</div>
-          <div class="text-gray-600 text-sm font-medium">Total People</div>
-        </div>
-        <div class="stats-card glass-effect text-center enhanced-shadow smooth-appear">
-          <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600 mb-2">
-            {{ maleCount() }}
-          </div>
-          <div class="text-gray-600 text-sm font-medium">Male</div>
-        </div>
-        <div class="stats-card glass-effect text-center enhanced-shadow smooth-appear">
-          <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-600 mb-2">
-            {{ femaleCount() }}
-          </div>
-          <div class="text-gray-600 text-sm font-medium">Female</div>
-        </div>
-      </div>
     </div>
 
     <!-- Enhanced Search Section -->
@@ -60,7 +40,7 @@
         <input
           type="text"
           [formControl]="searchControl"
-          placeholder="Search by name, room, city, or gender (e.g., 'John Smith', 'A101', 'New York', 'Male')..."
+          placeholder="Search by name, room or city (e.g., 'John Smith', 'A101', 'New York')..."
           class="search-input pl-16 pr-16 h-16 text-lg"
           autocomplete="off"
         />
@@ -83,7 +63,7 @@
         </button>
       </div>
       
-      <!-- Search Features Metric Cards -->
+      <!-- Search Tips with Icons -->
       <div class="mt-8 flex flex-wrap gap-3 justify-center">
         <div class="inline-flex items-center px-4 py-2 bg-royal-100 border border-royal-200 rounded-full text-sm font-medium text-royal-700 glow-on-hover">
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,6 +89,72 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
           </svg>
           By City
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Stats Metric Cards Row -->
+    <div class="text-center mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-6xl mx-auto">
+        <!-- Total People Card -->
+        <div class="metric-card group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="metric-icon bg-gradient-to-br from-royal-500 to-purple-600">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div class="metric-trend">
+              <div class="metric-trend-indicator positive">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="metric-content">
+            <div class="metric-number text-gradient">{{ searchResults().length }}</div>
+            <div class="metric-label">Total People</div>
+            <div class="metric-description">Active members in system</div>
+          </div>
+        </div>
+
+        <!-- Male Count Card -->
+        <div class="metric-card group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="metric-icon bg-gradient-to-br from-indigo-500 to-blue-600">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <div class="metric-trend">
+              <div class="metric-percentage text-indigo-600">{{ ((maleCount() / searchResults().length) * 100).toFixed(0) }}%</div>
+            </div>
+          </div>
+          <div class="metric-content">
+            <div class="metric-number text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">{{ maleCount() }}</div>
+            <div class="metric-label">Male</div>
+            <div class="metric-description">Male population count</div>
+          </div>
+        </div>
+
+        <!-- Female Count Card -->
+        <div class="metric-card group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="metric-icon bg-gradient-to-br from-pink-500 to-rose-600">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <div class="metric-trend">
+              <div class="metric-percentage text-pink-600">{{ ((femaleCount() / searchResults().length) * 100).toFixed(0) }}%</div>
+            </div>
+          </div>
+          <div class="metric-content">
+            <div class="metric-number text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-600">{{ femaleCount() }}</div>
+            <div class="metric-label">Female</div>
+            <div class="metric-description">Female population count</div>
+          </div>
         </div>
       </div>
     </div>

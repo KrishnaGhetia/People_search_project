@@ -135,3 +135,100 @@
 .focus-visible {
   @apply focus:outline-none focus:ring-2 focus:ring-royal-500 focus:ring-offset-2;
 }
+
+/* Enhanced Metric Cards */
+.metric-card {
+  @apply bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 240px;
+}
+
+.metric-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 30px rgba(139, 80, 255, 0.2);
+}
+
+.metric-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+}
+
+.metric-icon:hover {
+  @apply scale-110;
+}
+
+.metric-trend {
+  @apply flex items-center space-x-2;
+}
+
+.metric-trend-indicator {
+  @apply w-8 h-8 rounded-full flex items-center justify-center;
+}
+
+.metric-trend-indicator.positive {
+  @apply bg-emerald-100 text-emerald-600;
+}
+
+.metric-percentage {
+  @apply text-sm font-bold;
+}
+
+.metric-content {
+  @apply space-y-2;
+}
+
+.metric-number {
+  @apply text-5xl font-black leading-none;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.metric-label {
+  @apply text-lg font-bold text-gray-700;
+}
+
+.metric-description {
+  @apply text-sm text-gray-500 font-medium;
+}
+
+/* Metric Card Animations */
+@keyframes metricPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.metric-card.animate-pulse {
+  animation: metricPulse 2s infinite;
+}
+
+/* Responsive adjustments for metric cards */
+@media (max-width: 768px) {
+  .metric-card {
+    @apply p-6;
+    min-height: 200px;
+  }
+  
+  .metric-number {
+    @apply text-4xl;
+  }
+  
+  .metric-icon {
+    @apply w-12 h-12;
+  }
+}
+
+/* Glass effect enhancement for metric cards */
+.metric-card::before {
+  content: '';
+  @apply absolute inset-0 rounded-3xl;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  z-index: -1;
+}
+
+.metric-card {
+  @apply relative;
+}
