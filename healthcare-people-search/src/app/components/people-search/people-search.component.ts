@@ -97,4 +97,8 @@ export class PeopleSearchComponent implements OnInit {
   trackByPersonId(index: number, person: Person): number {
     return person.id;
   }
+
+  getInitials(name: string): string {
+    return name.split(' ').map(n => n[0]).join('');
+  }
 }
