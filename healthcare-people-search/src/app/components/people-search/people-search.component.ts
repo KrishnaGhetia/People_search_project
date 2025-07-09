@@ -1,10 +1,12 @@
-import { Component, OnInit, signal, computed, effect } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap, startWith } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Person } from '../../models/person.model';
 import { PeopleService } from '../../services/people.service';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-people-search',
