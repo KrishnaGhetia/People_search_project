@@ -1,110 +1,137 @@
-/* Component-specific styles - using Tailwind utilities in template */
+/* Component-specific styles - using Tailwind CSS utilities */
 
-/* Additional component styles if needed */
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+.stats-card {
+  @apply transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.slide-up {
-  animation: slideUp 0.3s ease-out;
+.search-container {
+  @apply relative overflow-hidden;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.search-container::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-royal-100/50 to-purple-100/50 rounded-3xl;
+  filter: blur(20px);
+  z-index: -1;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.table-row {
+  @apply transition-all duration-300 hover:bg-gradient-to-r hover:from-royal-50/80 hover:to-purple-50/80;
 }
 
-/* Custom enhancements for modern UI */
+.table-row:hover {
+  transform: translateX(4px);
+}
+
+.person-avatar {
+  @apply transition-all duration-300 hover:scale-110;
+}
+
+.badge-enhanced {
+  @apply transition-all duration-300 hover:shadow-md hover:-translate-y-0.5;
+}
+
+.floating-elements {
+  @apply pointer-events-none select-none;
+}
+
 .glass-effect {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(24px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
 }
 
-.hover-lift:hover {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-in-out;
+.enhanced-shadow {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-/* Focus states for accessibility */
-.focus-visible:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+.royal-gradient-border {
+  border-image: linear-gradient(135deg, #8b50ff, #a855f7, #ec4899) 1;
 }
 
-/* Smooth scrolling for table */
-.smooth-scroll {
-  scroll-behavior: smooth;
+.table-container {
+  @apply relative overflow-hidden;
 }
 
-/* Custom loading animation */
+.table-container::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-royal-50/30 to-purple-50/30 rounded-2xl;
+  z-index: -1;
+}
+
+.enhanced-button {
+  @apply relative overflow-hidden;
+}
+
+.enhanced-button::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 transform scale-x-0 transition-transform duration-300;
+  transform-origin: left;
+}
+
+.enhanced-button:hover::before {
+  transform: scaleX(1);
+}
+
 .pulse-ring {
-  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  @apply animate-ping absolute inline-flex h-full w-full rounded-full opacity-20;
 }
 
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.33);
-  }
-  40%,
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
+.loading-dots {
+  @apply flex space-x-1;
 }
 
-/* Enhanced table animations */
-.table-row-enter {
-  animation: tableRowEnter 0.3s ease-out;
+.loading-dot {
+  @apply w-2 h-2 rounded-full animate-bounce;
 }
 
-@keyframes tableRowEnter {
+.loading-dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.card-hover-effect {
+  @apply transition-all duration-500 hover:shadow-2xl;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.smooth-appear {
+  animation: smoothAppear 0.6s ease-out;
+}
+
+@keyframes smoothAppear {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(20px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .mobile-stack {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .mobile-text-center {
-    text-align: center;
-  }
+.text-gradient {
+  @apply bg-gradient-to-r from-royal-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
 }
 
-/* Dark mode preparations */
-@media (prefers-color-scheme: dark) {
-  .dark-mode-text {
-    color: #e2e8f0;
-  }
-  
-  .dark-mode-bg {
-    background-color: #1e293b;
-  }
+.interactive-element {
+  @apply transition-all duration-300 hover:scale-105 active:scale-95;
+}
+
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-royal-500 focus:ring-offset-2;
 }

@@ -11,7 +11,7 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-people-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, CdkTableModule, CdkScrollableModule],
   templateUrl: './people-search.component.html',
   styleUrls: ['./people-search.component.css']
 })
@@ -31,6 +31,8 @@ export class PeopleSearchComponent implements OnInit {
   showInitialState = computed(() => 
     !this.isLoading() && this.searchTerm().trim() === ''
   );
+  maleCount = computed(() => this.searchResults().filter(p => p.sex === 'Male').length);
+  femaleCount = computed(() => this.searchResults().filter(p => p.sex === 'Female').length);
 
   private searchSubject = new BehaviorSubject<string>('');
 

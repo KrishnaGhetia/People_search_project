@@ -4,4 +4,5 @@ export interface Person {
   age: number;
   sex: 'Male' | 'Female';
   roomNo: string;
+  city: string;
 }
