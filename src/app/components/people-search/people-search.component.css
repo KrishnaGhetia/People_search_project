@@ -179,7 +179,6 @@
 
 .metric-number {
   @apply text-5xl font-black leading-none;
-  font-family: 'Inter', sans-serif;
   letter-spacing: -0.02em;
 }
 
